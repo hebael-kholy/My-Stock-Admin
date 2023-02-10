@@ -1,0 +1,67 @@
+<mat-nav-list class="navList">
+  <div class="logo py-4 text-center ms-3">
+    <img src="assets/profile.jpg" alt="" width="150">
+  </div>
+  <h2 class="text-center text-white">Admin Name</h2>
+  <h3 class="text-center text-white">admin@gmail.com</h3>
+  <mat-divider class="mb-4"></mat-divider>
+
+  <mat-list-item [routerLink]="['/products']">
+    <button mat-button routerLinkActive="list-item-active">
+      <mat-icon>dashboard</mat-icon>
+      <span>Products</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/orders']">
+    <button mat-button routerLinkActive="list-item-active">
+      <mat-icon>dashboard</mat-icon>
+      <span>Orders</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/categories']">
+    <button mat-button routerLinkActive="list-item-active">
+      <mat-icon>category</mat-icon>
+      <span>Categories</span>
+    </button>
+  </mat-list-item>
+  <mat-list-item [routerLink]="['/settings']">
+    <button mat-button routerLinkActive="list-item-active">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
+
+<!-- <div class="container-navbar">
+  <div class="">
+    <mat-icon>notifications _none</mat-icon>
+  </div>
+  <div class="user">
+    <img src="assets/profile.jpg" alt="">
+    <h4 class="name">Admin</h4>
+    <p class="mail">admin@gmail.com</p>
+  </div>
+  <div class="menu">
+    <div class="menu-head">
+      <span>Dashboard</span>
+    </div>
+    <div class="menu-item">
+      <button mat-button class="menu-button">
+        <mat-icon>dashboard</mat-icon>
+        <span>Products</span>
+      </button>
+      <button mat-button class="menu-button">
+        <mat-icon>dashboard</mat-icon>
+        <span>Orders</span>
+      </button>
+      <button mat-button class="menu-button">
+        <mat-icon>category</mat-icon>
+        <span>Cartegory</span>
+      </button>
+      <button mat-button class="menu-button">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+    </div>
+  </div>
+</div> -->
