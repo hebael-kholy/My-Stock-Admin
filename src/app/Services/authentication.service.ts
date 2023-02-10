@@ -12,6 +12,7 @@ export class AuthenticationService {
   //   'dinaomran8@gmail.com',
   //   'test123'
   // );
+
   isAuthenticated = false;
   constructor(private router: Router, private myHttpClient: HttpClient) {}
 
@@ -21,6 +22,16 @@ export class AuthenticationService {
       'https://ecommerceiti-heba.onrender.com/users/admin/login',
       obj
     );
+  }
+
+  logOut() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('token ');
+    this.router.navigate(['']);
+  }
+
+  checkLoginStatus() {
+    return localStorage.getItem('token ');
   }
 
   // authenticate(signInData: SignInData): boolean {
@@ -46,9 +57,4 @@ export class AuthenticationService {
   // private checkPassword(password: string): boolean {
   //   return password === this.mockedUser.getPassword();
   // }
-
-  logOut() {
-    this.isAuthenticated = false;
-    this.router.navigate(['']);
-  }
 }

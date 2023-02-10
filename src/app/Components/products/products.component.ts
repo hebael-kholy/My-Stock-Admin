@@ -9,6 +9,8 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 export class ProductsComponent {
   constructor(public authService: AuthenticationService) {}
 
+  loginStatus = this.authService.checkLoginStatus();
+
   logOut() {
     this.authService.logOut();
   }

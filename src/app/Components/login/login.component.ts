@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         console.log('res:', res);
         console.log('token:', res.token);
-        localStorage.setItem('token', res.token);
+        localStorage.setItem('token ', res.token);
         Swal.fire('Thank You...', 'You Login Successfully', 'success');
         this.router.navigate(['home']);
         this.isLoading = false;
