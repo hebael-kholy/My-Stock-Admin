@@ -6,62 +6,28 @@
   <h3 class="text-center text-white">admin@gmail.com</h3>
   <mat-divider class="mb-4"></mat-divider>
 
-  <mat-list-item [routerLink]="['/products']">
+  <mat-list-item [routerLink]="['/home/products']">
     <button mat-button routerLinkActive="list-item-active">
       <mat-icon>dashboard</mat-icon>
       <span>Products</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/orders']">
+  <mat-list-item [routerLink]="['/home/orders']">
     <button mat-button routerLinkActive="list-item-active">
       <mat-icon>dashboard</mat-icon>
       <span>Orders</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/categories']">
+  <mat-list-item [routerLink]="['/home/categories']">
     <button mat-button routerLinkActive="list-item-active">
       <mat-icon>category</mat-icon>
       <span>Categories</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/settings']">
+  <mat-list-item [routerLink]="['/home/settings']">
     <button mat-button routerLinkActive="list-item-active">
       <mat-icon>settings</mat-icon>
       <span>Settings</span>
     </button>
   </mat-list-item>
 </mat-nav-list>
-
-<!-- <div class="container-navbar">
-  <div class="">
-    <mat-icon>notifications _none</mat-icon>
-  </div>
-  <div class="user">
-    <img src="assets/profile.jpg" alt="">
-    <h4 class="name">Admin</h4>
-    <p class="mail">admin@gmail.com</p>
-  </div>
-  <div class="menu">
-    <div class="menu-head">
-      <span>Dashboard</span>
-    </div>
-    <div class="menu-item">
-      <button mat-button class="menu-button">
-        <mat-icon>dashboard</mat-icon>
-        <span>Products</span>
-      </button>
-      <button mat-button class="menu-button">
-        <mat-icon>dashboard</mat-icon>
-        <span>Orders</span>
-      </button>
-      <button mat-button class="menu-button">
-        <mat-icon>category</mat-icon>
-        <span>Cartegory</span>
-      </button>
-      <button mat-button class="menu-button">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
-    </div>
-  </div>
-</div> -->

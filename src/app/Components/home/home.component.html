@@ -1,13 +1,18 @@
 <mat-sidenav-container *ngIf="authService.isAuthenticated || loginStatus">
-  <mat-sidenav #sidebar mode="side" opened="">
+  <mat-sidenav #sidebar mode="side" opened="" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content">
-      <div class="toolbar">
-        <mat-toolbar>
-          <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
-          <div class="box">
+      <div class="toolbar w-100">
+        <mat-toolbar class="bg-light">
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidebar.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="box ms-auto">
             <button mat-button [matMenuTriggerFor]="menu">
               <img src="assets/profile.jpg" alt="" width="50" class="p-2">
               UserName
@@ -23,7 +28,10 @@
         </mat-toolbar>
       </div>
       <div class="main">
-        Welcome Admin
+        <!-- <div class="text-capitalize p-2 text-center">
+          Welcome Admin
+        </div> -->
+        <router-outlet></router-outlet>
       </div>
     </div>
   </mat-sidenav-content>

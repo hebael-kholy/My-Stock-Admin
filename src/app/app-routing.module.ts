@@ -6,7 +6,6 @@ import { LoginComponent } from './Components/login/login.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { SettingsComponent } from './Components/settings/settings.component';
-import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,19 +15,24 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-  },
-  { path: 'orders', component: OrdersComponent },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-  },
-  {
-    path: 'categories',
-    component: CategoriesComponent,
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
+    children: [
+      {
+        path: 'orders',
+        component: OrdersComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+      },
+    ],
   },
 ];
 

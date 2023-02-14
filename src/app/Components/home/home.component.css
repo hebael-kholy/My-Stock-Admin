@@ -9,13 +9,11 @@ mat-sidenav-content {
 mat-sidenav-content .main {
   margin-left: 30px;
 }
-mat-toolbar {
-  justify-content: space-between;
-}
 mat-toolbar mat-icon {
-  margin: 15px;
-  color: grey;
   cursor: pointer;
+}
+mat-toolbar {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .box button {
   padding-left: 0;

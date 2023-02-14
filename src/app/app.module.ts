@@ -13,6 +13,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,7 @@ import { ProductsComponent } from './Components/products/products.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { SettingsComponent } from './Components/settings/settings.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { SettingsComponent } from './Components/settings/settings.component';
     MatListModule,
     MatCardModule,
     MatInputModule,
+    MatTableModule,
+    MatSelectModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
