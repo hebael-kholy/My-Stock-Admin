@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductDialogComponent } from './Components/add-product-dialog/add-product-dialog.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -34,6 +35,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'addProductDialoge',
+    component: AddProductDialogComponent
+  }
 ];
 
 @NgModule({

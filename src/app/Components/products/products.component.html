@@ -1,1 +1,61 @@
-<p>Products works</p>
+<button mat-raised-button style="background-color: #04AA6D;" (click)="openModel()">+ Add New Product</button>
+      <table mat-table [dataSource]="products"  matSort  class="mat-elevation-z8">
+   <!-- Position Column -->
+   <ng-container matColumnDef="image">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+       Name
+     </th>
+     <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="100px" height="100px"></td>
+   </ng-container>
+
+   <!-- Name Column -->
+   <ng-container matColumnDef="title">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+       Name
+     </th>
+     <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+   </ng-container>
+
+
+   <ng-container matColumnDef="price">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+       Pricing
+     </th>
+     <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+   </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="action">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+       Action
+     </th>
+     <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" style="margin-right: 10px;">Update</button>
+      <button mat-raised-button color="warn">Delete</button>
+    </td>
+   </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+<!-- <div flex fxLayout="row" **fxLayout.lt-sm="column">
+  <div fxFlex="50">
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+        Action
+      </th>
+      <td mat-cell *matCellDef="let element">
+       <button mat-raised-button color="accent" style="margin-right: 10px;">Update</button>
+       <button mat-raised-button color="warn">Delete</button>
+     </td>
+    </ng-container>
+  </div>
+
+  <div fxFlex="33">
+
+  </div>
+  <div fxFlex="27">
+
+  </div>
+</div> -->
+

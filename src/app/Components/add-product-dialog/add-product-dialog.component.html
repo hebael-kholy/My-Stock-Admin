@@ -1,0 +1,101 @@
+<!-- <p>add-product-dialog works!</p>
+
+<div class="example-container" style="padding: 30px;">
+  <p>
+  <mat-form-field  appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput #input maxlength="10" placeholder="Enter title">
+   </mat-form-field>
+
+  <mat-form-field  appearance="outline">
+    <mat-label>Price</mat-label>
+    <input matInput #input maxlength="10" placeholder="Enter title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+    <mat-select>
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+   </mat-form-field>
+</p>
+<div class="row2 text-center">
+
+        <input class="Upload"
+      type="file"
+      id="fileInput"
+      name="fileInput"
+      accept="image/*" multiple
+      (change)="selectFiles($event)"
+    />
+
+<mat-form-field appearance="outline" style="width: 250px;">
+  <mat-label>Textarea</mat-label>
+  <textarea matInput rows="5"></textarea>
+</mat-form-field>
+</div>
+<p>
+  <div layout="row" layout-align="end end">
+    <div>
+
+      <button
+            mat-flat-button
+            color="primary"
+            [disabled]="!selectedFiles"
+            (click)="uploadFiles()">
+            Upload
+      </button>
+    </div>
+  </div>
+
+</div>
+ -->
+ <form>
+  <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control w-100" id="inputCity">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label for="inputCity">City</label>
+        <input type="number" class="form-control w-100" id="inputCity">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <!-- <app-select [data]="category" [title]="categories" (selectedValue)="getSelectedCategories($event)"></app-select> -->
+      </div>
+  </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control w-100">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="State">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Zip">
+    </div>
+</form>
+ <!-- <div class="container-fluid d-flex">
+<form action="" class="">
+ <div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control w-100" id="inputCity">
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputState">State</label>
+    <select id="inputState" class="form-control w-100">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputZip">Zip</label>
+    <input type="text" class="form-control w-100" id="inputZip">
+  </div>
+</div>
+</form>
+</div> -->
