@@ -23,6 +23,10 @@ import { ProductsComponent } from './Components/products/products.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { SettingsComponent } from './Components/settings/settings.component';
+import { MatTableModule } from '@angular/material/table';
+import { AddProductDialogComponent } from './Components/add-product-dialog/add-product-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { SettingsComponent } from './Components/settings/settings.component';
     OrdersComponent,
     CategoriesComponent,
     SettingsComponent,
+    AddProductDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,9 @@ import { SettingsComponent } from './Components/settings/settings.component';
     MatListModule,
     MatCardModule,
     MatInputModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
