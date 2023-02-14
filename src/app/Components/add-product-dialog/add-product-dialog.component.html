@@ -1,34 +1,15 @@
-<!-- <p>add-product-dialog works!</p> -->
-<!-- <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+<!-- <p>add-product-dialog works!</p>
 
 <div class="example-container" style="padding: 30px;">
   <p>
   <mat-form-field  appearance="outline">
     <mat-label>Title</mat-label>
     <input matInput #input maxlength="10" placeholder="Enter title">
-    <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
-  </mat-form-field>
+   </mat-form-field>
 
   <mat-form-field  appearance="outline">
     <mat-label>Price</mat-label>
     <input matInput #input maxlength="10" placeholder="Enter title">
-    <!-- <mat-hint align="end">{{input.value.length}}/10</mat-hint> -->
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -36,16 +17,10 @@
     <mat-select>
       <mat-option value="option">Option</mat-option>
     </mat-select>
-    <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-  </mat-form-field>
+   </mat-form-field>
 </p>
-<p class="row2">
-<!-- <button
-        mat-flat-button
-        color="primary"
-        [disabled]="!selectedFiles"
-        (click)="uploadFiles()">
-        Upload -->
+<div class="row2 text-center">
+
         <input class="Upload"
       type="file"
       id="fileInput"
@@ -53,26 +28,74 @@
       accept="image/*" multiple
       (change)="selectFiles($event)"
     />
-      <!-- </button> -->
-<!-- <mat-form-field appearance="fill"></mat-form-field> -->
+
 <mat-form-field appearance="outline" style="width: 250px;">
   <mat-label>Textarea</mat-label>
   <textarea matInput rows="5"></textarea>
 </mat-form-field>
-</p>
+</div>
 <p>
   <div layout="row" layout-align="end end">
     <div>
-<!--
+
       <button
             mat-flat-button
             color="primary"
             [disabled]="!selectedFiles"
             (click)="uploadFiles()">
             Upload
-      </button> -->
+      </button>
     </div>
   </div>
 
 </div>
-
+ -->
+ <form>
+  <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control w-100" id="inputCity">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <label for="inputCity">City</label>
+        <input type="number" class="form-control w-100" id="inputCity">
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <!-- <app-select [data]="category" [title]="categories" (selectedValue)="getSelectedCategories($event)"></app-select> -->
+      </div>
+  </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control w-100">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="State">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Zip">
+    </div>
+</form>
+ <!-- <div class="container-fluid d-flex">
+<form action="" class="">
+ <div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="inputCity">City</label>
+    <input type="text" class="form-control w-100" id="inputCity">
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputState">State</label>
+    <select id="inputState" class="form-control w-100">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputZip">Zip</label>
+    <input type="text" class="form-control w-100" id="inputZip">
+  </div>
+</div>
+</form>
+</div> -->

@@ -87,7 +87,9 @@ export class ProductsComponent implements AfterViewInit, OnInit{
   name: string="";
   openModel(){
       const dialogRef = this.dialog.open(AddProductDialogComponent, {
-        data: {name: this.name, animal: this.animal},
+        // data: {name: this.name, animal: this.animal}
+        height: '400px',
+        width: '900px',
       });
 
       dialogRef.afterClosed().subscribe(result => {
