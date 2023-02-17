@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
@@ -9,29 +8,13 @@ import { ProductService } from 'src/app/Services/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import {AddProductDialogComponent} from '../add-product-dialog/add-product-dialog.component'
 
-// export interface products {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
-// const ELEMENT_DATA: products[] = [
-//   // {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   // {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   // {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   // {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   // {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   // {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   // {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   // {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   // {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
+
 export class ProductsComponent implements AfterViewInit, OnInit{
 
   products:[]|any= [];
@@ -44,7 +27,7 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       this.dataSource.sort = this.sort;
     }
 
-    constructor(public authService: AuthenticationService,
+    constructor(
       private _liveAnnouncer: LiveAnnouncer,
       private router: ActivatedRoute,
       private prodServ: ProductService,
@@ -63,14 +46,6 @@ export class ProductsComponent implements AfterViewInit, OnInit{
         this._liveAnnouncer.announce('Sorting cleared');
       }
     }
-
-
-  loginStatus = this.authService.checkLoginStatus();
-
-  logOut() {
-    this.authService.logOut();
-  }
-
 
 
   ngOnInit(): void {

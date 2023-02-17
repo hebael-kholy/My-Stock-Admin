@@ -13,6 +13,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,9 @@ import { MatTableModule } from '@angular/material/table';
 import { AddProductDialogComponent } from './Components/add-product-dialog/add-product-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+
+import { LayoutModule } from '@angular/cdk/layout';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +63,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatDialogModule,
     MatSelectModule
+    MatSelectModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

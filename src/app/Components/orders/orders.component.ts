@@ -1,17 +1,29 @@
-import { Component } from '@angular/core';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/Services/orders/orders.service';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css'],
 })
-export class OrdersComponent {
-  constructor(public authService: AuthenticationService) {}
+export class OrdersComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'date', 'price', 'title', 'state'];
 
-  loginStatus = this.authService.checkLoginStatus();
+  dataSource = [];
+  isLoading = false;
 
-  logOut() {
-    this.authService.logOut();
+  constructor(public orderService: OrdersService) {}
+
+  ngOnInit(): void {
+    this.getOrders();
+  }
+
+  getOrders() {
+    this.isLoading = true;
+    this.orderService.getAllOrders().subscribe((res: any) => {
+      console.log(res.data);
+      this.dataSource = res.data;
+      this.isLoading = false;
+    });
   }
 }

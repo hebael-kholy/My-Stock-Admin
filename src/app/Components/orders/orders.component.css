@@ -1,24 +1,13 @@
-mat-sidenav {
-  background-color: #0f172a;
-  width: 230px;
-  height: 100%;
+table {
+  min-width: 95%;
+  margin: auto;
 }
-mat-sidenav-content {
-  height: 100vh;
+table,
+td,
+th {
+  text-align: center;
 }
-mat-sidenav-content .main {
-  margin-left: 30px;
-}
-mat-toolbar {
-  justify-content: space-between;
-}
-mat-toolbar mat-icon {
-  margin: 15px;
-  color: grey;
-  cursor: pointer;
-}
-.box button {
-  padding-left: 0;
-  padding-top: 25px;
-  padding-bottom: 25px;
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
 }
