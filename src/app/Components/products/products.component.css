@@ -6,3 +6,10 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
+td i{
+  font-size: 22px;
+}
+.main{
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}

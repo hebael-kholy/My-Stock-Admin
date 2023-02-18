@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Services/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import {AddProductDialogComponent} from '../add-product-dialog/add-product-dialog.component'
+import {EditProductComponent} from '../edit-product/edit-product.component'
 
 
 @Component({
@@ -18,7 +19,7 @@ import {AddProductDialogComponent} from '../add-product-dialog/add-product-dialo
 export class ProductsComponent implements AfterViewInit, OnInit{
 
   products:[]|any= [];
-  displayedColumns: string[] = ['image', 'title', 'price', 'action'];
+  displayedColumns: string[] = ['image', 'title', 'price','category', 'action'];
     dataSource = new MatTableDataSource(this.products);
 
     @ViewChild(MatSort)sort!: MatSort;
@@ -49,12 +50,17 @@ export class ProductsComponent implements AfterViewInit, OnInit{
 
 
   ngOnInit(): void {
+    // this.applyFilter(event);
     this.getProducts();
+    this.dataSource.filterPredicate = function (record,filter) {
+      return true;
+    }
   }
   getProducts(){
     this.prodServ.getAllProducts().subscribe((res:any)=>{
       console.log(res.data[0].title);
       this.products = res.data;
+      // localStorage.setItem("idProduct", res.data._id);
     },error=>{console.log("Error");})
   }
 
@@ -70,9 +76,34 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.animal = result;
+        this.getProducts();
       });
 
   }
+  openEditModel(index:number){
+      const dialogRef = this.dialog.open(EditProductComponent, {
+        // data: {name: this.name, animal: this.animal}
+        height: '400px',
+        width: '900px',
+        data: this.products[index],
+      });
 
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.animal = result;
+      });
+
+  }
+  deleteById(_id:any){
+    this.prodServ.deleteProduct(_id).subscribe(res=>{
+      this.getProducts();
+    });
+    this.getProducts();
+  }
+
+  applyFilter(event: Event ){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 

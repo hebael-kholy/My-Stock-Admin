@@ -6,6 +6,9 @@
   align-items:  space-between;
   justify-content: space-between;
 } */
+.row{
+      /* --bs-gutter-x: 0; */
+}
 label{
   font-weight: 400;
   font-size: 18px;

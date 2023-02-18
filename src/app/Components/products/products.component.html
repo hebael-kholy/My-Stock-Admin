@@ -1,11 +1,24 @@
+<div class="main">
+<div class="row">
+  <div class="col-md-3 ms-auto mt-3">
+      <div class="input-group">
+          <input class="form-control border-end-0 border rounded-pill" autocomplete="off" type="search" placeholder="Search Product ....." id="example-search-input" matInput (keyup)="applyFilter($event)">
+          <span class="input-group-append" style="position: absolute; right: 0;">
+              <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                  <i class="bi bi-search"></i>
+              </button>
+          </span>
+      </div>
+  </div>
+</div>
 <button mat-raised-button style="background-color: #04AA6D;" (click)="openModel()">+ Add New Product</button>
       <table mat-table [dataSource]="products"  matSort  class="mat-elevation-z8">
    <!-- Position Column -->
    <ng-container matColumnDef="image">
      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-       Name
+       Image
      </th>
-     <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="100px" height="100px"></td>
+     <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="100px" height="100px" style="padding: 5px;"></td>
    </ng-container>
 
    <!-- Name Column -->
@@ -24,20 +37,30 @@
      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
    </ng-container>
 
+   <ng-container matColumnDef="category">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+       Category
+     </th>
+     <!-- <td mat-cell *matCellDef="let element"> {{element.category.name}} </td> -->
+     <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+   </ng-container>
+
    <!-- Symbol Column -->
    <ng-container matColumnDef="action">
      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
        Action
      </th>
-     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary" style="margin-right: 10px;">Update</button>
-      <button mat-raised-button color="warn">Delete</button>
+     <td mat-cell *matCellDef="let element; let i=index">
+      <i class="bi bi-pen" color="primary" style="margin-right: 10px;" (click)="openEditModel(i)"></i>
+      <i class="bi bi-trash3" color="primary" style="margin-right: 10px; color: #e12727;" (click)="deleteById(element._id)"></i>
+      <!-- <button mat-raised-button color="warn">Delete</button> -->
     </td>
    </ng-container>
 
    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
  </table>
+</div>
 <!-- <div flex fxLayout="row" **fxLayout.lt-sm="column">
   <div fxFlex="50">
     <ng-container matColumnDef="action">

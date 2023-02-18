@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,8 +13,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
-import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 
 import { LayoutModule } from '@angular/cdk/layout';
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -44,6 +43,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     CategoriesComponent,
     SettingsComponent,
     AddProductDialogComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +62,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
-    MatSelectModule
     MatSelectModule,
     LayoutModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
