@@ -56,10 +56,12 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       return true;
     }
   }
+
   getProducts(){
     this.prodServ.getAllProducts().subscribe((res:any)=>{
       console.log(res.data[0].title);
-      this.products = res.data;
+      this.products = res.data.category.name;
+      console.log(this.products);
       // localStorage.setItem("idProduct", res.data._id);
     },error=>{console.log("Error");})
   }
@@ -98,7 +100,7 @@ export class ProductsComponent implements AfterViewInit, OnInit{
     this.prodServ.deleteProduct(_id).subscribe(res=>{
       this.getProducts();
     });
-    this.getProducts();
+    // this.getProducts();
   }
 
   applyFilter(event: Event ){

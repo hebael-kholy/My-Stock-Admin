@@ -40,6 +40,6 @@ export class ProductService {
     return this.http.delete(`https://ecommerceiti-heba.onrender.com/product/${id}`);
   }
   editProduct(id:any ,item:any){
-    return this.http.patch(`https://ecommerceiti-heba.onrender.com/product/${id}`,item);
+    return this.http.put(`https://ecommerceiti-heba.onrender.com/product/updateall/${id}`,item);
   }
 }

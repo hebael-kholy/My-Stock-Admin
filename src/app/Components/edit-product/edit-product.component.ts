@@ -115,7 +115,7 @@ export class EditProductComponent implements OnInit{
     // localStorage.setItem("id",this.data)
     this.getCatergory();
     this.getSelectedCateory(event);
-    this.Save();
+    // this.Save();
     // console.log(this.router.snapshot.params.id);
     // this.Service.getCurrentData(this.router.snapshot.params._id)
     // this.imageInfos = this.uploadService.getFiles();
@@ -141,16 +141,14 @@ export class EditProductComponent implements OnInit{
       formData.append('description', this.form.get('description')!.value);
       // formData.append('image', this.selectedFile, this.selectedFile.name)
       formData.append('image', this.form.get('image')!.value);
-      // this.Service.editProduct(this.data._id,formData).subscribe(res=>{
-      //   console.log(res);
-      //   // this.dialogRef.close();
-      //   // Swal.fire("Product Edit successfully","","success");
-      //   // ngAfterViewChecked(){}
-      //   // window.location.reload();
-      //   // this.dialogRef.close();
-
-      // });
-
+      this.Service.editProduct(this.data._id,formData).subscribe(res=>{
+        console.log(res);
+        this.dialogRef.close();
+        Swal.fire("Product Added successfully","","success");
+        // ngAfterViewChecked(){}
+        // window.location.reload();
+        this.dialogRef.close();
+      })
   //     this.Service.editProduct(this.data._id,formData).subscribe(res=>{
   //       console.log(res);
   //       this.dialogRef.close();
