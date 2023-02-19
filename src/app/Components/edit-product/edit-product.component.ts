@@ -8,14 +8,6 @@ import Swal from 'sweetalert2';
 import { DialogData } from '../add-product-dialog/add-product-dialog.component';
 import { ProductsComponent } from '../products/products.component';
 
-export interface EditData{
-    _id:'',
-    title: 'l,;.',
-    price: 52,
-    description:'km',
-    image:'kl',
-    category:'klml,',
-}
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -26,7 +18,7 @@ export class EditProductComponent implements OnInit{
 
   constructor(
     public dialogRef: MatDialogRef<EditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: EditData,
+    @Inject(MAT_DIALOG_DATA) public data : any,
     private Service:ProductService,
     private build:FormBuilder,
     private http: HttpClient,
@@ -74,6 +66,7 @@ export class EditProductComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.data);
     this.form = this.build.group({
+      id: this.data.id,
       title:[this.data.title,Validators.required],
       description:[this.data.description],
       price:[this.data.price],
@@ -92,7 +85,7 @@ export class EditProductComponent implements OnInit{
       formData.append('category', this.form.get('category')!.value);
       formData.append('description', this.form.get('description')!.value);
       formData.append('image', this.form.get('image')!.value);
-      this.Service.editProduct(this.data._id,formData).subscribe(res=>{
+      this.Service.editProduct(this.data.id,formData).subscribe(res=>{
         console.log(res);
         this.dialogRef.close();
         Swal.fire("Product Added successfully","","success");

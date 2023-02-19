@@ -85,12 +85,14 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       });
 
   }
-  openEditModel(index:number){
+  // openEditModel(id:any,title:any,image:any,price:any,category:any,description:any){
+  openEditModel(element: any){
       const dialogRef = this.dialog.open(EditProductComponent, {
         // data: {name: this.name, animal: this.animal}
         height: '400px',
         width: '900px',
-        data: this.products[index],
+        // data: {id: id, image: image, price, title: title, description: description, category: category},
+        data: {id: element._id,image:  element.image, price: element.price, title:  element.title, description: element.description, category: element.category},
       });
 
       dialogRef.afterClosed().subscribe(result => {
