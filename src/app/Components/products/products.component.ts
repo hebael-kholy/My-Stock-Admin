@@ -65,7 +65,6 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       this.dataSource=new MatTableDataSource(this.products);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      // localStorage.setItem("idProduct", res.data._id);
     },error=>{console.log("Error");})
   }
 
@@ -73,7 +72,6 @@ export class ProductsComponent implements AfterViewInit, OnInit{
   name: string="";
   openModel(){
       const dialogRef = this.dialog.open(AddProductDialogComponent, {
-        // data: {name: this.name, animal: this.animal}
         height: '400px',
         width: '900px',
       });
@@ -85,13 +83,11 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       });
 
   }
-  // openEditModel(id:any,title:any,image:any,price:any,category:any,description:any){
+
   openEditModel(element: any){
       const dialogRef = this.dialog.open(EditProductComponent, {
-        // data: {name: this.name, animal: this.animal}
         height: '400px',
         width: '900px',
-        // data: {id: id, image: image, price, title: title, description: description, category: category},
         data: {id: element._id,image:  element.image, price: element.price, title:  element.title, description: element.description, category: element.category},
       });
 

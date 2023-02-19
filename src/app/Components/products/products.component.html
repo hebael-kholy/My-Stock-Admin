@@ -49,7 +49,6 @@
        Action
      </th>
      <td mat-cell *matCellDef="let element; let i=index">
-      <!-- <i class="bi bi-pen" color="primary" style="margin-right: 10px; color: blue;" (click)="openEditModel(element._id,element.title,element.image,element.price,element.category,element.description)"></i> -->
       <i class="bi bi-pen" color="primary" style="margin-right: 10px; color: blue;" (click)="openEditModel(element)"></i>
       <i class="bi bi-trash3" color="primary" style="margin-right: 10px; color: #e12727;" (click)="deleteById(element._id)"></i>
 
