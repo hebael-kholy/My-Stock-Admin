@@ -1,134 +1,21 @@
-<!-- <p>add-product-dialog works!</p>
-
-<div class="example-container" style="padding: 30px;">
-  <p>
-  <mat-form-field  appearance="outline">
-    <mat-label>Title</mat-label>
-    <input matInput #input maxlength="10" placeholder="Enter title">
-   </mat-form-field>
-
-  <mat-form-field  appearance="outline">
-    <mat-label>Price</mat-label>
-    <input matInput #input maxlength="10" placeholder="Enter title">
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Category</mat-label>
-    <mat-select>
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-   </mat-form-field>
-</p>
-<div class="row2 text-center">
-
-        <input class="Upload"
-      type="file"
-      id="fileInput"
-      name="fileInput"
-      accept="image/*" multiple
-      (change)="selectFiles($event)"
-    />
-
-<mat-form-field appearance="outline" style="width: 250px;">
-  <mat-label>Textarea</mat-label>
-  <textarea matInput rows="5"></textarea>
-</mat-form-field>
-</div>
-<p>
-  <div layout="row" layout-align="end end">
-    <div>
-
-      <button
-            mat-flat-button
-            color="primary"
-            [disabled]="!selectedFiles"
-            (click)="uploadFiles()">
-            Upload
-      </button>
-    </div>
-  </div>
-
-</div>
- -->
- <!-- <form>
-  <div class="row">
-      <div class="col-md-4 col-sm-12">
-        <label for="inputCity">Title</label>
-        <input type="text" class="form-control w-100" id="inputCity" placeholder="Title ...">
-      </div>
-      <div class="col-md-4 col-sm-12">
-        <label for="inputCity">Price</label>
-        <input type="number" class="form-control w-100" id="inputCity" placeholder="Price ...">
-      </div>
-      <div class="col-md-4 col-sm-12">
-        <app-select [data]="category" [title]="categories" (selectedValue)="getSelectedCategories($event)"></app-select>
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control w-100">
-          <option selected *ngFor="">Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-  </div>
-      <div class="form-group col-md-2">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control w-100">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="State">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Zip">
-    </div>
-</form> -->
- <!-- <div class="container-fluid d-flex">
-<form action="" class="">
- <div class="form-row">
-  <div class="form-group col-md-4">
-    <label for="inputCity">City</label>
-    <input type="text" class="form-control w-100" id="inputCity">
-  </div>
-  <div class="form-group col-md-2">
-    <label for="inputState">State</label>
-    <select id="inputState" class="form-control w-100">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="form-group col-md-2">
-    <label for="inputZip">Zip</label>
-    <input type="text" class="form-control w-100" id="inputZip">
-  </div>
-</div>
-</form>
-</div> -->
 <div class="con">
   <h1>Add Product</h1>
   <hr>
-  <!-- <form [formGroup]="form" (ngSubmit)="submitForm()"> -->
   <form [formGroup]="form">
    <div class="row">
        <div class="col-md-4 col-sm-12">
          <label for="inputCity">Title</label>
-         <input type="text" class="form-control w-100" id="inputCity" formControlName="title" >
-       </div>
+         <input type="text" class="form-control w-100" id="inputCity" formControlName="title">
+          <p style="color: red;" *ngIf="form.controls['title'].dirty && form.hasError('required','title')">* This field is required</p>
+        </div>
        <div class="col-md-4 col-sm-12">
          <label for="inputCity">Price</label>
          <input type="number" class="form-control w-100" id="inputCity" formControlName="price">
-       </div>
-       <!-- <div class="col-md-4 col-sm-12">
-         <label for="inputCity">brand</label>
-         <input type="text" class="form-control w-100" id="inputCity" >
-       </div> -->
+         <p style="color: red;" *ngIf="form.controls['price'].dirty && form.hasError('required','price')">* This field is required</p>
+        </div>
        <div class="col-md-4 col-sm-12">
-         <!-- <app-select></app-select> -->
-         <!-- Category -->
-         <!-- <app-select [data]="category" [title]="categories" (selectedValue)="getSelectedCategories($event)"></app-select> -->
          <label for="">Categories</label>
          <select name="" id=""  class="form-select" aria-label="Default select example" (change)="getSelectedCateory($event)" >
-           <!-- <option value="" selected></option> -->
            <option [id]="cat._id" *ngFor="let cat of categories" [value]="cat._id">{{cat.name}}</option>
          </select>
        </div>
@@ -137,16 +24,19 @@
        <label for="">Image</label>
        <img src="{{base64}}" alt="">
        <input type="file" class="form-control" (change)="getImgPath($event)">
-     </div>
+       <p style="color: red;" *ngIf="form.controls['image'].dirty && form.hasError('required','image')">* This field is required</p>
+
+      </div>
      <div class="col-md-8 col-sm-12">
        <label for="">Description</label>
        <textarea class="form-control" placeholder="Type Here ...." formControlName="description"></textarea>
-     </div>
+       <p style="color: red;" *ngIf="form.controls['description'].dirty && form.hasError('required','description')">* This field is required</p>
+      </div>
    </div>
    <div class="d-flex justify-content-end mt-3">
-     <button class="btn btn-success" (click)="addProduct()">Add</button>
+     <button class="btn btn-success" [disabled]="form.invalid" (click)="addProduct()">Add</button>
    </div>
  </form>
  </div>
 
- <!-- [disabled]="!form.valid" -->
+

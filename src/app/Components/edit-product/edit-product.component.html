@@ -1,9 +1,7 @@
 <div class="con">
-  <h1>Add Product</h1>
+  <h1>Edit Product</h1>
   <hr>
-  <!-- <form [formGroup]="form" (ngSubmit)="submitForm()"> -->
   <form [formGroup]="form">
-  <!-- <form [formGroup]="form"> -->
    <div class="row">
        <div class="col-md-4 col-sm-12">
          <label for="inputCity">Title</label>
@@ -13,25 +11,17 @@
          <label for="inputCity">Price</label>
          <input type="number" class="form-control w-100" id="inputCity" formControlName="price">
        </div>
-       <!-- <div class="col-md-4 col-sm-12">
-         <label for="inputCity">brand</label>
-         <input type="text" class="form-control w-100" id="inputCity" >
-       </div> -->
        <div class="col-md-4 col-sm-12">
-         <!-- <app-select></app-select> -->
-         <!-- Category -->
-         <!-- <app-select [data]="category" [title]="categories" (selectedValue)="getSelectedCategories($event)"></app-select> -->
          <label for="">Categories</label>
          <select name="" id=""  class="form-select" aria-label="Default select example" (change)="getSelectedCateory($event)" >
-           <!-- <option value="" selected></option> -->
-           <option [id]="cat._id" *ngFor="let cat of categories" [value]="cat._id">{{cat.name}}</option>
+          <option [id]="cat._id" *ngFor="let cat of categories" [value]="cat._id">{{cat.name}}</option>
          </select>
        </div>
 
      <div class="col-md-4 col-sm-12">
        <label for="">Image</label>
-       <img src="{{base64}}" alt="">
-       <input type="file" class="form-control" (change)="getImgPath($event)">
+       <img [src]="url" alt="">
+       <input type="file" class="form-control" (change)="uploadImgFile($event)" >
      </div>
      <div class="col-md-8 col-sm-12">
        <label for="">Description</label>
@@ -44,4 +34,3 @@
  </form>
  </div>
 
- <!-- [disabled]="!form.valid" -->

@@ -31,7 +31,7 @@ export class ProductService {
   //   return this.http.get(`${this.baseUrl}/files`);
   // }
   getAllCategories(){
-    return this.http.get("https://ecommerceiti-heba.onrender.com/category");
+    return this.http.get("https://ecommerceiti-heba.onrender.com/category?limit=100");
   }
   createProduct(item:any){
     return this.http.post("https://ecommerceiti-heba.onrender.com/product/createall" , item);

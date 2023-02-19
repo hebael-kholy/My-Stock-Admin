@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -30,6 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -64,7 +67,8 @@ import { EditProductComponent } from './Components/edit-product/edit-product.com
     MatDialogModule,
     MatSelectModule,
     LayoutModule,
-
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

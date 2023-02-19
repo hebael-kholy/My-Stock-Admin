@@ -1,18 +1,17 @@
 <div class="main">
-<div class="row">
-  <div class="col-md-3 ms-auto mt-3">
-      <div class="input-group">
-          <input class="form-control border-end-0 border rounded-pill" autocomplete="off" type="search" placeholder="Search Product ....." id="example-search-input" matInput (keyup)="applyFilter($event)">
-          <span class="input-group-append" style="position: absolute; right: 0;">
-              <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
-                  <i class="bi bi-search"></i>
-              </button>
-          </span>
-      </div>
+<div class="row w-100 d-flex flex-row justify-content-between align-items-end mt-3">
+  <div class="col-md-6 h-25">
+    <button  class="btn btn-success" (click)="openModel()">+ Add New Product</button>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Filter Table</mat-label>
+      <input matInput placeholder="Search ..." #input (keyup)="applyFilter($event)"/>
+    </mat-form-field>
   </div>
 </div>
-<button mat-raised-button style="background-color: #04AA6D;" (click)="openModel()">+ Add New Product</button>
-      <table mat-table [dataSource]="products"  matSort  class="mat-elevation-z8">
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
    <!-- Position Column -->
    <ng-container matColumnDef="image">
      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
@@ -41,8 +40,7 @@
      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
        Category
      </th>
-     <!-- <td mat-cell *matCellDef="let element"> {{element.category.name}} </td> -->
-     <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+     <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
    </ng-container>
 
    <!-- Symbol Column -->
@@ -51,34 +49,24 @@
        Action
      </th>
      <td mat-cell *matCellDef="let element; let i=index">
-      <i class="bi bi-pen" color="primary" style="margin-right: 10px;" (click)="openEditModel(i)"></i>
+      <i class="bi bi-pen" color="primary" style="margin-right: 10px; color: blue;" (click)="openEditModel(i)"></i>
       <i class="bi bi-trash3" color="primary" style="margin-right: 10px; color: #e12727;" (click)="deleteById(element._id)"></i>
-      <!-- <button mat-raised-button color="warn">Delete</button> -->
+
     </td>
    </ng-container>
 
    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+   <tr *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      The filter doesn't match any product in the Table for this text {{input.value}}
+    </td>
+  </tr>
  </table>
+ <mat-paginator [pageSizeOptions]="[4, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+  </mat-paginator>
 </div>
-<!-- <div flex fxLayout="row" **fxLayout.lt-sm="column">
-  <div fxFlex="50">
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-        Action
-      </th>
-      <td mat-cell *matCellDef="let element">
-       <button mat-raised-button color="accent" style="margin-right: 10px;">Update</button>
-       <button mat-raised-button color="warn">Delete</button>
-     </td>
-    </ng-container>
-  </div>
-
-  <div fxFlex="33">
-
-  </div>
-  <div fxFlex="27">
-
-  </div>
-</div> -->
 

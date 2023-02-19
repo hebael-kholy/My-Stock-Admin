@@ -8,7 +8,8 @@ import { ProductService } from 'src/app/Services/product/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import {AddProductDialogComponent} from '../add-product-dialog/add-product-dialog.component'
 import {EditProductComponent} from '../edit-product/edit-product.component'
-
+import { MatPaginator } from '@angular/material/paginator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -23,9 +24,10 @@ export class ProductsComponent implements AfterViewInit, OnInit{
     dataSource = new MatTableDataSource(this.products);
 
     @ViewChild(MatSort)sort!: MatSort;
-
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
     ngAfterViewInit() {
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     }
 
     constructor(
@@ -33,14 +35,11 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       private router: ActivatedRoute,
       private prodServ: ProductService,
       public dialog: MatDialog
-      ) {}
+      ) {
+       this.getProducts();
+      }
 
-    /** Announce the change in sort state for assistive technology. */
     announceSortChange(sortState: Sort) {
-      // This example uses English messages. If your application supports
-      // multiple language, you would internationalize these strings.
-      // Furthermore, you can customize the message to add additional
-      // details about the values being sorted.
       if (sortState.direction) {
         this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
       } else {
@@ -60,8 +59,12 @@ export class ProductsComponent implements AfterViewInit, OnInit{
   getProducts(){
     this.prodServ.getAllProducts().subscribe((res:any)=>{
       console.log(res.data[0].title);
-      this.products = res.data.category.name;
+      this.products = res.data;
       console.log(this.products);
+
+      this.dataSource=new MatTableDataSource(this.products);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       // localStorage.setItem("idProduct", res.data._id);
     },error=>{console.log("Error");})
   }
@@ -93,19 +96,41 @@ export class ProductsComponent implements AfterViewInit, OnInit{
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.animal = result;
+        this.getProducts();
       });
 
   }
   deleteById(_id:any){
-    this.prodServ.deleteProduct(_id).subscribe(res=>{
-      this.getProducts();
-    });
-    // this.getProducts();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.prodServ.deleteProduct(_id).subscribe(res=>{
+          this.getProducts();
+        });
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
   }
 
   applyFilter(event: Event ){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if(this.dataSource.paginator){
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
 
