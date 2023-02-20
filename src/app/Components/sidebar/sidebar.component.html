@@ -1,31 +1,30 @@
 <mat-nav-list class="navList">
   <div class="logo py-4 text-center ms-3">
-    <img src="assets/profile.jpg" alt="" width="150">
+    <img src="{{image}}" alt="" width="150" height="150">
   </div>
-  <h2 class="text-center text-white">Admin Name</h2>
-  <h3 class="text-center text-white">admin@gmail.com</h3>
-  <mat-divider class="mb-4"></mat-divider>
-
-  <mat-list-item [routerLink]="['/home/products']">
-    <button mat-button routerLinkActive="list-item-active">
+  <h2 class="text-center text-white text-capitalize ms-3">{{username}}</h2>
+  <h3 class="text-center text-white ms-4">{{useremail}}</h3>
+  <mat-divider class="mb-4 ms-3"></mat-divider>
+  <mat-list-item [routerLink]="['/home/products']" routerLinkActive="list-item-active">
+    <button mat-button>
       <mat-icon>dashboard</mat-icon>
       <span>Products</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/home/orders']">
-    <button mat-button routerLinkActive="list-item-active">
+  <mat-list-item [routerLink]="['/home/orders']" routerLinkActive="list-item-active">
+    <button mat-button>
       <mat-icon>dashboard</mat-icon>
       <span>Orders</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/home/categories']">
-    <button mat-button routerLinkActive="list-item-active">
+  <mat-list-item [routerLink]="['/home/categories']" routerLinkActive="list-item-active">
+    <button mat-button>
       <mat-icon>category</mat-icon>
       <span>Categories</span>
     </button>
   </mat-list-item>
-  <mat-list-item [routerLink]="['/home/settings']">
-    <button mat-button routerLinkActive="list-item-active">
+  <mat-list-item [routerLink]="['/home/settings']" routerLinkActive="list-item-active">
+    <button mat-button>
       <mat-icon>settings</mat-icon>
       <span>Settings</span>
     </button>

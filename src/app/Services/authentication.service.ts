@@ -1,18 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignInData } from '../model/signInData';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  // private readonly mockedUser = new SignInData(
-  //   'dinaomran8@gmail.com',
-  //   'test123'
-  // );
-
   isAuthenticated = false;
   constructor(private router: Router, private myHttpClient: HttpClient) {}
 
@@ -26,35 +20,15 @@ export class AuthenticationService {
 
   logOut() {
     this.isAuthenticated = false;
-    localStorage.removeItem('token ');
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+    localStorage.removeItem('image');
+    localStorage.removeItem('id');
     this.router.navigate(['']);
   }
 
   checkLoginStatus() {
-    return localStorage.getItem('token ');
+    return localStorage.getItem('token');
   }
-
-  // authenticate(signInData: SignInData): boolean {
-  //   if (this.checkCredentials(signInData)) {
-  //     this.isAuthenticated = true;
-  //     this.router.navigate(['home']);
-  //     return true;
-  //   } else {
-  //     this.isAuthenticated = false;
-  //     return false;
-  //   }
-  //   }
-  // private checkCredentials(signInData: SignInData): boolean {
-  //   return (
-  //     this.checkEmail(signInData.getEmail()) &&
-  //     this.checkPassword(signInData.getPassword())
-  //   );
-  // }
-
-  // private checkEmail(email: string): boolean {
-  //   return email === this.mockedUser.getEmail();
-  // }
-  // private checkPassword(password: string): boolean {
-  //   return password === this.mockedUser.getPassword();
-  // }
 }

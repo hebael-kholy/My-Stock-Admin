@@ -20,3 +20,6 @@ mat-toolbar {
   padding-top: 25px;
   padding-bottom: 25px;
 }
+.box img {
+  border-radius: 50%;
+}

@@ -13,7 +13,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +36,9 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule} from '@angular/material/paginator';
-
+import { AddCategoryDialogComponent } from './Components/add-category-dialog/add-category-dialog.component';
+import { EditCategoryDialogComponent } from './Components/edit-category-dialog/edit-category-dialog.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,9 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     SettingsComponent,
     AddProductDialogComponent,
     EditProductComponent
+    AddCategoryDialogComponent,
+    EditCategoryDialogComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -67,8 +75,10 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     MatDialogModule,
     MatSelectModule,
     LayoutModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
     MatSortModule,
-    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

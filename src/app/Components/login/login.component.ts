@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authService.onLogin(loginObj).subscribe(
       (res: any) => {
-        console.log('res:', res);
-        console.log('token:', res.token);
-        localStorage.setItem('token ', res.token);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('name', res.user.name);
+        localStorage.setItem('email', res.user.email);
+        localStorage.setItem('image', res.user.image);
+        localStorage.setItem('id', res.user._id);
         Swal.fire('Thank You...', 'You Login Successfully', 'success');
-        this.router.navigate(['home']);
+        this.router.navigate(['home/products']);
         this.isLoading = false;
       },
       (err) => {

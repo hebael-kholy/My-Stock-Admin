@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  routerHome = '';
+export class HomeComponent implements OnInit {
+  image: any;
+  username: any;
+
+  ngOnInit(): void {}
+
+  ngAfterViewChecked() {
+    this.image = localStorage.getItem('image');
+    this.username = localStorage.getItem('name');
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -22,11 +29,8 @@ export class HomeComponent {
 
   constructor(
     public authService: AuthenticationService,
-    private breakpointObserver: BreakpointObserver,
-    private router: Router
-  ) {
-    this.routerHome = this.router.url;
-  }
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   loginStatus = this.authService.checkLoginStatus();
 
