@@ -27,3 +27,9 @@ mat-list-item:hover {
 .navList {
   width: 90%;
 }
+.list-item-active {
+  background-color: #2c3344;
+}
+.logo img {
+  border-radius: 50%;
+}

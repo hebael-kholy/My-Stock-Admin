@@ -15,6 +15,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +30,9 @@ import { OrdersComponent } from './Components/orders/orders.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { SettingsComponent } from './Components/settings/settings.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AddCategoryDialogComponent } from './Components/add-category-dialog/add-category-dialog.component';
+import { EditCategoryDialogComponent } from './Components/edit-category-dialog/edit-category-dialog.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +44,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     OrdersComponent,
     CategoriesComponent,
     SettingsComponent,
+    AddCategoryDialogComponent,
+    EditCategoryDialogComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +66,10 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatTableModule,
     MatSelectModule,
     LayoutModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

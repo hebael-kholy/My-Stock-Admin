@@ -14,8 +14,8 @@
           </button>
           <div class="box ms-auto">
             <button mat-button [matMenuTriggerFor]="menu">
-              <img src="assets/profile.jpg" alt="" width="50" class="p-2">
-              UserName
+              <img src="{{image}}" alt="user" width="50" height="50" class="p-2">
+              <span class="text-capitalize">{{username}}</span>
               <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
