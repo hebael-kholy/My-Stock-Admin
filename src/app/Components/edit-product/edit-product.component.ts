@@ -104,7 +104,9 @@ export class EditProductComponent implements OnInit {
     }
   }
 
+    isLoading = false;
   Save() {
+    this.isLoading = true;
     let user: any;
     let title = this.form.get('title')!.value;
     let description = this.form.get('description')?.value;
@@ -129,6 +131,8 @@ export class EditProductComponent implements OnInit {
       console.log(res);
       this.dialogRef.close();
       Swal.fire('Product Added successfully', '', 'success');
+      this.isLoading = false;
+
       this.dialogRef.close();
     });
     this.updateprodImg();

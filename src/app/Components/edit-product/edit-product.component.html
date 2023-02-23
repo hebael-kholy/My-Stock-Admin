@@ -33,5 +33,8 @@
     <div class="d-flex justify-content-end mt-3">
       <button class="btn btn-success" (click)="Save()">Save</button>
     </div>
+    <div class="text-center overlay" *ngIf="isLoading">
+      <img src="assets/Spinner-1s-200px.svg" alt="">
+    </div>
   </form>
 </div>
