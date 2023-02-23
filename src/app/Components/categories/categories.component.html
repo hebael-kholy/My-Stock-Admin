@@ -27,7 +27,7 @@
       <th mat-header-cell *matHeaderCellDef> Change Category </th>
       <td mat-cell *matCellDef="let element;">
         <button mat-raised-button color="primary"
-          (click)="editModal(element.name,element.image,element.slug)">Edit</button>
+          (click)="editModal(element.name,element.image,element.slug,element._id)">Edit</button>
         <button mat-raised-button color="warn" (click)="deleteCategory(element.name)" class="ms-3">Delete</button>
       </td>
     </ng-container>

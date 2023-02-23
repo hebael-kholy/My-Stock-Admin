@@ -63,10 +63,10 @@ export class CategoriesComponent {
     });
   }
 
-  editModal(name: any, image: any, slug: any) {
+  editModal(name: any, image: any, slug: any, id: any) {
     const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
       width: '350px',
-      data: { name: name, image: image, slug: slug },
+      data: { name: name, image: image, slug: slug, id: id },
     });
 
     dialogRef.afterClosed().subscribe(() => {

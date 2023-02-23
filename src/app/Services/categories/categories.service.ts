@@ -27,6 +27,13 @@ export class CategoriesService {
     );
   }
 
+  updateImage(categoryId: any, data: any) {
+    return this.myHttp.put(
+      'https://ecommerceiti-heba.onrender.com/category/images/' + categoryId,
+      data
+    );
+  }
+
   deleteCategory(categoryName: any) {
     return this.myHttp.delete(
       'https://ecommerceiti-heba.onrender.com/category/' + categoryName

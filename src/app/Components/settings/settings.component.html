@@ -24,10 +24,6 @@
       <label for="exampleInputImage"></label>
       <div class="d-flex box">
         <img src="{{urlImg}}" alt="admin image" (click)="openFile()">
-        <!-- <div class="d-flex justify-content-center align-items-center">
-          <button class="saveBtn btn btn-primary border-0" (click)="
-            updateImg()"><mat-icon>upload</mat-icon></button>
-        </div> -->
         <div class="inputFile d-flex justify-content-center align-items-center">
           <input type="file" class="form-control" id="exampleInputImage" (change)="uploadImgFile($event)" hidden>
         </div>

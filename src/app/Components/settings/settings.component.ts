@@ -57,7 +57,6 @@ export class SettingsComponent implements OnInit {
     formData.append('image', this.formValue.get('image')?.value);
 
     if (this.formValue.get('image')?.value != null) {
-      this.isLoading = true;
       localStorage.setItem('loading', 'true');
       this.authorizeService.updateImage(this.id, formData).subscribe({
         next: (res: any) => {
@@ -102,8 +101,6 @@ export class SettingsComponent implements OnInit {
       },
       error: (e) => {
         this.isLoading = false;
-        localStorage.setItem('loading', 'false');
-
         console.log(e.error.message);
         let errEmail = `Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "${email}" }`;
         if (e.error.message == errEmail) {

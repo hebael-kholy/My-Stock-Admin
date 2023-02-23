@@ -30,8 +30,12 @@ export class EditCategoryDialogComponent implements OnInit {
     console.log(this.data.image);
     this.formValue = this.formBuilder.group({
       name: [this.data.name, Validators.required],
-      image: [null, Validators.required],
+      image: [null],
     });
+  }
+
+  openFile() {
+    document.getElementById('exampleInputImage')?.click();
   }
 
   uploadImgFile(event: any) {
@@ -49,30 +53,69 @@ export class EditCategoryDialogComponent implements OnInit {
     this.formValue.get('image')?.updateValueAndValidity();
   }
 
-  EditCategory() {
+  EditImage() {
     var formData: any = new FormData();
-    formData.append('name', this.formValue.get('name')?.value);
     formData.append('image', this.formValue.get('image')?.value);
+
+    if (this.formValue.get('image')?.value != null) {
+      this.isLoading = true;
+      this.categoryService.updateImage(this.data.id, formData).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.data.image = res.data.image;
+          this.isLoading = false;
+          this.dialogRef.close();
+        },
+        error: (err: any) => {
+          console.log(err);
+          Swal.fire({
+            icon: 'warning',
+            title: 'Something Went Wrong!!!',
+            showConfirmButton: true,
+          });
+        },
+      });
+    }
+  }
+
+  EditCategory() {
+    let n = this.formValue.get('name')?.value;
+    let category = { name: n };
+
     this.isLoading = true;
-    this.categoryService.updateCategory(this.data.slug, formData).subscribe({
+    this.categoryService.updateCategory(this.data.slug, category).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.data.image = res.data.image;
+        this.EditImage();
         this.isLoading = false;
         Swal.fire({
           icon: 'success',
           title: 'Category Updated Successfully',
           showConfirmButton: true,
         });
-        this.dialogRef.close();
       },
-      error: (err) => {
+      error: (err: any) => {
         console.log(err);
-        Swal.fire({
-          icon: 'warning',
-          title: 'Something Went Wrong!!!',
-          showConfirmButton: true,
-        });
+        var nameErr = `Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: test.gategories index: name_1 dup key: { name: "${
+          this.formValue.get('name')?.value
+        }" }`;
+        if (err.error.message == nameErr) {
+          this.isLoading = false;
+          this.formValue.patchValue({
+            name: this.data.name,
+          });
+          Swal.fire({
+            icon: 'warning',
+            title: 'Name Already Exists!!!',
+            showConfirmButton: true,
+          });
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Something Went Wrong!!!',
+            showConfirmButton: true,
+          });
+        }
       },
     });
   }
