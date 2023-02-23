@@ -22,8 +22,8 @@
 
      <div class="col-md-4 col-sm-12">
        <label for="">Image</label>
-       <img src="{{base64}}" alt="">
        <input type="file" class="form-control" (change)="getImgPath($event)">
+       <img src="{{base64}}" alt="">
        <p style="color: red;" *ngIf="form.controls['image'].dirty && form.hasError('required','image')">* This field is required</p>
 
       </div>

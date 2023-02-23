@@ -82,8 +82,8 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   name: string = '';
   openModel() {
     const dialogRef = this.dialog.open(AddProductDialogComponent, {
-      height: '400px',
-      width: '900px',
+      height: '440px',
+      width: '800px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -95,8 +95,8 @@ export class ProductsComponent implements AfterViewInit, OnInit {
 
   openEditModel(element: any) {
     const dialogRef = this.dialog.open(EditProductComponent, {
-      height: '400px',
-      width: '900px',
+      height: '440px',
+      width: '800px',
       data: {
         id: element._id,
         image: element.image,

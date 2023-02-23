@@ -82,22 +82,55 @@ export class EditProductComponent implements OnInit {
     this.getSelectedCateory(event);
   }
 
-  Save() {
-    const formData: any = new FormData();
-    formData.append('title', this.form.get('title')!.value);
-    formData.append('price', this.form.get('price')!.value);
-    if (this.form.get('category')!.value !== null) {
-      formData.append('category', this.form.get('category')!.value);
-    } else {
-      formData.append('category', this.data.category);
+  updateprodImg() {
+    var formData: any = new FormData();
+    formData.append('image', this.form.get('image')?.value);
+    if (this.form.get('image')?.value != null) {
+      this.Service.updateImage(this.data.id, formData).subscribe({
+        next: (res: any) => {
+          console.log(res);
+        },
+        // error: (err) => {
+        //   // this.isLoading = false;
+        //   localStorage.setItem('loading', 'false');
+        //   console.log(err);
+        //   Swal.fire({
+        //     icon: 'warning',
+        //     title: 'Something Went Wrong!!!',
+        //     showConfirmButton: true,
+        //   });
+        // },
+      });
     }
-    formData.append('description', this.form.get('description')!.value);
-    formData.append('image', this.form.get('image')!.value);
-    this.Service.editProduct(this.data.id, formData).subscribe((res) => {
+  }
+
+  Save() {
+    let user: any;
+    let title = this.form.get('title')!.value;
+    let description = this.form.get('description')?.value;
+    let price = this.form.get('price')?.value;
+    // let category = this.form.get('category')?.value;
+    let category = '';
+    // let name = this.formValue.get('name')?.value;
+    // let email = this.formValue.get('email')?.value;
+    // let password = this.formValue.get('password')?.value;
+    const formData: any = new FormData();
+    // formData.append('title', this.form.get('title')!.value);
+    // formData.append('price', this.form.get('price')!.value);
+    if (this.form.get('category')!.value !== null) {
+      category = this.form.get('category')!.value;
+    } else {
+      category = this.data.category;
+    }
+    user = { title: title, description: description, price: price, category: category };
+    // formData.append('description', this.form.get('description')!.value);
+    // formData.append('image', this.form.get('image')!.value);
+    this.Service.editProduct(this.data.id, user).subscribe((res) => {
       console.log(res);
       this.dialogRef.close();
       Swal.fire('Product Added successfully', '', 'success');
       this.dialogRef.close();
     });
+    this.updateprodImg();
   }
 }
