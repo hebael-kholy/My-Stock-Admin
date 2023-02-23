@@ -75,8 +75,9 @@ export class AddProductDialogComponent implements OnInit{
     });
     this.form.get('image')!.updateValueAndValidity();
     }
-
+    isLoading = false;
     addProduct(){
+      this.isLoading = true;
       const formData:any = new FormData();
       formData.append('title', this.form.get('title')!.value);
       formData.append('price', this.form.get('price')!.value);
@@ -84,9 +85,11 @@ export class AddProductDialogComponent implements OnInit{
       formData.append('description', this.form.get('description')!.value);
       formData.append('image', this.form.get('image')!.value);
       this.Service.createProduct(formData).subscribe(res=>{
+      this.isLoading = false;
       console.log(res);
       this.dialogRef.close();
       Swal.fire("Product Added successfully","","success");
+      this.isLoading = false;
       this.dialogRef.close();
     })
   }
