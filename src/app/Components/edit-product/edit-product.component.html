@@ -2,16 +2,20 @@
   <h1>Edit Product</h1>
   <hr>
   <form [formGroup]="form">
-    <div class="row">
-      <div class="col-md-4 col-sm-12">
+    <div class="row g-3">
+      <div class="col-md-3 col-sm-12">
         <label for="inputCity">Title</label>
         <input type="text" class="form-control w-100" id="inputCity" formControlName="title">
       </div>
-      <div class="col-md-4 col-sm-12">
+      <div class="col-md-3 col-sm-12">
         <label for="inputCity">Price</label>
         <input type="number" class="form-control w-100" id="inputCity" formControlName="price">
       </div>
-      <div class="col-md-4 col-sm-12">
+      <div class="col-md-3 col-sm-12">
+        <label for="inputCity">quantity</label>
+        <input type="number" class="form-control w-100" id="inputCity" formControlName="quantity">
+      </div>
+      <div class="col-md-3 col-sm-12">
         <label for="">Categories</label>
         <select name="" id="" class="form-select" aria-label="Default select example"
           (change)="getSelectedCateory($event)">

@@ -21,6 +21,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'image',
     'title',
+    'quantity',
     'price',
     'category',
     'action',
@@ -104,6 +105,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
         title: element.title,
         description: element.description,
         category: element.category.name,
+        quantity: element.quantity,
       },
     });
 

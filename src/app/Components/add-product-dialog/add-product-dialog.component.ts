@@ -34,6 +34,7 @@ export class AddProductDialogComponent implements OnInit{
         description:['', Validators.required],
         image:['', Validators.required],
         category:['', Validators.required],
+        quantity: ['', Validators.required],
       });
     this.getCatergory();
     this.getSelectedCateory(event);
@@ -84,6 +85,7 @@ export class AddProductDialogComponent implements OnInit{
       formData.append('category', this.form.get('category')!.value);
       formData.append('description', this.form.get('description')!.value);
       formData.append('image', this.form.get('image')!.value);
+      formData.append('quantity', this.form.get('quantity')!.value);
       this.Service.createProduct(formData).subscribe(res=>{
       this.isLoading = false;
       console.log(res);

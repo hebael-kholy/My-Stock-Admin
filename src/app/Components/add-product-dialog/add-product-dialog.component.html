@@ -2,18 +2,23 @@
   <h1>Add Product</h1>
   <hr>
   <form [formGroup]="form">
-   <div class="row">
-       <div class="col-md-4 col-sm-12">
+   <div class="row g-3">
+       <div class="col-md-3 col-sm-12">
          <label for="inputCity">Title</label>
          <input type="text" class="form-control w-100" id="inputCity" formControlName="title">
           <p style="color: red;" *ngIf="form.controls['title'].dirty && form.hasError('required','title')">* This field is required</p>
         </div>
-       <div class="col-md-4 col-sm-12">
+       <div class="col-md-3 col-sm-12">
          <label for="inputCity">Price</label>
          <input type="number" class="form-control w-100" id="inputCity" formControlName="price">
          <p style="color: red;" *ngIf="form.controls['price'].dirty && form.hasError('required','price')">* This field is required</p>
         </div>
-       <div class="col-md-4 col-sm-12">
+       <div class="col-md-3 col-sm-12">
+         <label for="inputCity">Quantity</label>
+         <input type="number" class="form-control w-100" id="inputCity" formControlName="quantity">
+         <!-- <p style="color: red;" *ngIf="form.controls['quantity'].dirty && form.hasError('required','quantity)">* This field is required</p> -->
+        </div>
+       <div class="col-md-3 col-sm-12">
          <label for="">Categories</label>
          <select name="" id=""  class="form-select" aria-label="Default select example" (change)="getSelectedCateory($event)" >
            <option [id]="cat._id" *ngFor="let cat of categories" [value]="cat._id">{{cat.name}}</option>
