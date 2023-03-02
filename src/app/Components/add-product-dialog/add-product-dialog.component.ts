@@ -38,6 +38,7 @@ export class AddProductDialogComponent implements OnInit {
       description: ['', Validators.required],
       image: ['', Validators.required],
       category: ['', Validators.required],
+      quantity: ['', Validators.required],
     });
     this.getCatergory();
     this.getSelectedCateory(event);
@@ -59,6 +60,8 @@ export class AddProductDialogComponent implements OnInit {
   }
 
   getSelectedCateory(event: any) {
+    console.log(event.target.value);
+
     this.form.get('category')!.setValue(event.target.value);
     console.log(this.form);
   }
@@ -78,6 +81,7 @@ export class AddProductDialogComponent implements OnInit {
     });
     this.form.get('image')!.updateValueAndValidity();
   }
+
   isLoading = false;
   addProduct() {
     this.isLoading = true;
@@ -87,6 +91,7 @@ export class AddProductDialogComponent implements OnInit {
     formData.append('category', this.form.get('category')!.value);
     formData.append('description', this.form.get('description')!.value);
     formData.append('image', this.form.get('image')!.value);
+    formData.append('quantity', this.form.get('quantity')!.value);
     this.Service.createProduct(formData).subscribe({
       next: (res: any) => {
         this.isLoading = false;
@@ -109,6 +114,7 @@ export class AddProductDialogComponent implements OnInit {
             showConfirmButton: true,
           });
         } else {
+          this.isLoading = false;
           Swal.fire({
             icon: 'warning',
             title: 'Something Went Wrong!!!',
