@@ -1,3 +1,14 @@
+<div class="d-flex justify-content-end">
+<mat-form-field appearance="fill" class="me-5 mt-3">
+<mat-select  (selectionChange)="onChange($event)" placeholder="Filter Depend on Status ...">
+  <mat-option value="All" selected>All</mat-option>
+  <mat-option value="accepted">accepted</mat-option>
+  <mat-option value="pending">pending</mat-option>
+  <mat-option value="rejected">rejected</mat-option>
+</mat-select>
+</mat-form-field>
+</div>
+
 <div class="mat-elevation-z8 tableContainer">
   <table mat-table matSort [dataSource]="dataSource">
     <ng-container matColumnDef="name">
