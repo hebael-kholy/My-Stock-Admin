@@ -1,13 +1,16 @@
-table {
-  min-width: 95%;
-  margin: auto;
-}
-table,
+/* table {
+  min-width: 98%;
+  margin: 0 0 auto;
+} */
+/* table,
 td,
 th {
   text-align: center;
+} */
+.tableContainer {
+  margin-top: 15px;
+  margin-right: 32px;
 }
-.example-additional-selection {
-  opacity: 0.75;
-  font-size: 0.75em;
+.btn-primary {
+  background-color: green !important;
 }
